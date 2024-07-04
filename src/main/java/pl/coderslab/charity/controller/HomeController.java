@@ -1,4 +1,4 @@
-package pl.coderslab.charity;
+package pl.coderslab.charity.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -28,6 +28,7 @@ public class HomeController {
         model.addAttribute("institutions_2", institutions2);
 
         model.addAttribute("all_bags", donationService.countAllBags());
+        model.addAttribute("all_donations", donationService.countAllDonations());
         return "index";
     }
 }

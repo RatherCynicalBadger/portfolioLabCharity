@@ -14,4 +14,9 @@ public class DonationServiceImpl implements DonationService {
     public int countAllBags() {
         return donationRepo.countAllBags();
     }
+
+    @Override
+    public int countAllDonations() {
+        return donationRepo.countAllDonations();
+    }
 }
