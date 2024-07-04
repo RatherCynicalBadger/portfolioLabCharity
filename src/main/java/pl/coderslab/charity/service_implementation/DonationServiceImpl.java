@@ -9,4 +9,9 @@ import pl.coderslab.charity.service.DonationService;
 @AllArgsConstructor
 public class DonationServiceImpl implements DonationService {
     private final DonationRepository donationRepo;
+
+    @Override
+    public int countAllBags() {
+        return donationRepo.countAllBags();
+    }
 }
