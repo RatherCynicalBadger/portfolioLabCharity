@@ -164,7 +164,39 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
       // TODO: get data from inputs and show them in summary
+      if (this.currentStep === 5) {
 
+        const checkboxes = this.$form.querySelectorAll('input[type="checkbox"]');
+        console.log(checkboxes);
+        let categories = [];
+        const radios = this.$form.querySelectorAll('input[type="radio"]');
+        console.log(radios);
+        let institution;
+
+        for (const radio of radios) {
+          if (radio.checked) {
+            console.log("CHECKED!!!")
+            institution = radio.value;
+            break;
+          }
+        }
+
+        for (const category of categories) {
+          if (category.checked) {
+            console.log("CHECKED: " + category);
+            categories.push(category.value);
+          }
+        }
+
+        this.$form.querySelector("#summary-cats").innerHTML = categories.toString() + ", <b>WORKI: " + this.$form.querySelector("#form-quantity").value + "</b>";
+        this.$form.querySelector("#summary-inst").innerText = institution;
+        this.$form.querySelector("#summary-street").innerText = this.$form.querySelector("#form-street").value;
+        this.$form.querySelector("#summary-city").innerText = this.$form.querySelector("#form-city").value;
+        this.$form.querySelector("#summary-zip").innerText = this.$form.querySelector("#form-zip").value;
+        this.$form.querySelector("#summary-date").innerText = this.$form.querySelector("#form-date").value;
+        this.$form.querySelector("#summary-time").innerText = this.$form.querySelector("#form-time").value;
+        this.$form.querySelector("#summary-comment").innerText = this.$form.querySelector("#form-comment").value;
+      }
     }
 
   }

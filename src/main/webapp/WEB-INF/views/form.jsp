@@ -64,7 +64,10 @@
 
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <form:checkbox path="categories" value="${cat}"/>
+                            <form:checkbox
+                                    path="categories"
+                                    value="${cat}"
+                            />
                             <span class="checkbox"></span>
                             <span class="description">${cat.name}</span>
                         </label>
@@ -84,7 +87,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60 L worków:
-                        <form:input path="quantity" type="number" step="1" min="1"/>
+                        <form:input path="quantity" type="number" step="1" min="1" id="form-quantity"/>
                     </label>
                 </div>
 
@@ -126,16 +129,16 @@
                     <div class="form-section--column">
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Ulica <form:input path="street"/> </label>
+                            <label> Ulica <form:input path="street" id="form-street"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Miasto <form:input path="city"/> </label>
+                            <label> Miasto <form:input path="city" id="form-city"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Kod pocztowy <form:input path="zipCode"/> </label>
+                                Kod pocztowy <form:input path="zipCode" id="form-zip"/> </label>
                         </div>
 
 <%--                        <div class="form-group form-group--inline">--%>
@@ -148,15 +151,15 @@
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <form:input type="date" path="pickUpDate"/> </label>
+                            <label> Data <form:input type="date" path="pickUpDate" id="form-date"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <form:input type="time" path="pickUpTime"/> </label>
+                            <label> Godzina <form:input type="time" path="pickUpTime" id="form-time"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Uwagi dla kuriera <form:textarea path="pickUpComment" rows="5"/> </label>
+                            <label> Uwagi dla kuriera <form:textarea path="pickUpComment" rows="5" id="form-comment"/> </label>
                         </div>
                     </div>
                 </div>
@@ -177,17 +180,12 @@
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span>
-                                <span class="summary--text">
-                                    <c:forEach var="cat" items="${donation.categories}">
-                                        ${cat.name},
-                                    </c:forEach>
-                                    <b>WORKI: ${donation.quantity}</b>
-                                </span>
+                                <span class="summary--text" id="summary-cats"></span>
                             </li>
 
                             <li>
                                 <span class="icon icon-hand"></span>
-                                <span class="summary--text">Dla: ${donation.institution.name}</span>
+                                <span class="summary--text" id="summary-inst">Dla: </span>
                             </li>
                         </ul>
                     </div>
@@ -196,9 +194,9 @@
                         <div class="form-section--column">
                             <h4>Adres odbioru:</h4>
                             <ul>
-                                <li>${donation.street}</li>
-                                <li>${donation.city}</li>
-                                <li>${donation.zipCode}</li>
+                                <li id="summary-street"></li>
+                                <li id="summary-city"></li>
+                                <li id="summary-zip"></li>
 <%--                                <li>telefon</li>--%>
                             </ul>
                         </div>
@@ -206,9 +204,9 @@
                         <div class="form-section--column">
                             <h4>Termin odbioru:</h4>
                             <ul>
-                                <li>${donation.pickUpDate}</li>
-                                <li>${donation.pickUpTime}</li>
-                                <li>${donation.pickUpComment}</li>
+                                <li id="summary-date"></li>
+                                <li id="summary-time"></li>
+                                <li id="summary-comment"></li>
                             </ul>
                         </div>
                     </div>

@@ -29,9 +29,7 @@ public class DonationController {
 
     @PostMapping("/donation")
     public String processDonationForm(@ModelAttribute Donation donation) {
-
-        System.out.println(donation);
-
+        donationService.save(donation);
         return "form-confirmation";
     }
 }

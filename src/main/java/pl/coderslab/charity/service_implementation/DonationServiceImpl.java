@@ -2,6 +2,7 @@ package pl.coderslab.charity.service_implementation;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.coderslab.charity.entity.Donation;
 import pl.coderslab.charity.repository.DonationRepository;
 import pl.coderslab.charity.service.DonationService;
 
@@ -18,5 +19,10 @@ public class DonationServiceImpl implements DonationService {
     @Override
     public int countAllDonations() {
         return donationRepo.countAllDonations();
+    }
+
+    @Override
+    public Donation save(Donation donation) {
+        return donationRepo.save(donation);
     }
 }
