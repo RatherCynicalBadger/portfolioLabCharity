@@ -163,28 +163,23 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 5;
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
-      // TODO: get data from inputs and show them in summary
       if (this.currentStep === 5) {
 
         const checkboxes = this.$form.querySelectorAll('input[type="checkbox"]');
-        console.log(checkboxes);
         let categories = [];
         const radios = this.$form.querySelectorAll('input[type="radio"]');
-        console.log(radios);
         let institution;
 
         for (const radio of radios) {
           if (radio.checked) {
-            console.log("CHECKED!!!")
-            institution = radio.value;
+            institution = radio.parentElement.querySelector(".description").querySelector(".title").innerText;
             break;
           }
         }
 
-        for (const category of categories) {
-          if (category.checked) {
-            console.log("CHECKED: " + category);
-            categories.push(category.value);
+        for (const checkbox of checkboxes) {
+          if (checkbox.checked) {
+            categories.push(checkbox.parentElement.querySelector(".description").innerText);
           }
         }
 

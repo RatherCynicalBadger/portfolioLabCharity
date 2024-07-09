@@ -28,7 +28,7 @@ public class Donation {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     @JsonIgnore
     private List<Category> categories;
-    @OneToOne
+    @ManyToOne
     private Institution institution;
     private String street;
     private String city;
