@@ -5,5 +5,5 @@ import pl.coderslab.charity.entity.UserEntity;
 
 public interface UserEntityRepository extends JpaRepository<UserEntity, Integer> {
 
-    UserEntity findByUsername(String username);
+    UserEntity findByEmail(String email);
 }

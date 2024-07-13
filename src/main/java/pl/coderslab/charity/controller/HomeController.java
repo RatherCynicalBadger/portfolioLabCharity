@@ -18,7 +18,7 @@ public class HomeController {
     private final InstitutionService institutionService;
     private final DonationService donationService;
 
-    @RequestMapping("/")
+    @RequestMapping("/home")
     public String homeAction(Model model) {
         List<Institution> allInst = institutionService.findAll();
         List<Institution> institutions1 = allInst.subList(0, allInst.size() / 2);
