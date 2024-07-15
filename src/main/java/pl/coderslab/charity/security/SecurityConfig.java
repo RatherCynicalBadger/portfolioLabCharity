@@ -11,6 +11,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -28,15 +29,21 @@ public class SecurityConfig {
     }
 
     @Bean
+    public AuthenticationSuccessHandler authenticationSuccessHandler() {
+        return new CharityAppLoginHandler();
+    }
+
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
         httpSecurity
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/home", "/register", "/static/**", "/WEB-INF/views/**").permitAll()
+                        .requestMatchers("/admin_panel").hasAuthority("ROLE_ADMIN")
                         .anyRequest().authenticated())
                 .formLogin(login -> login
                         .loginPage("/login")
-                        .defaultSuccessUrl("/user_details")
+                        .successHandler(authenticationSuccessHandler())
                         .permitAll())
                 .logout(logout -> logout
                         .logoutSuccessUrl("/home")
@@ -48,9 +55,4 @@ public class SecurityConfig {
 
         return httpSecurity.build();
     }
-
-//    @Bean
-//    WebSecurityCustomizer configureWebSecurity() {
-//        return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/css/**", "/WEB-INF/views/**");
-//    }
 }

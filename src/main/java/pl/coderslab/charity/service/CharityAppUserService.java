@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import pl.coderslab.charity.entity.UserEntity;
 import pl.coderslab.charity.repository.RoleRepository;
 import pl.coderslab.charity.repository.UserEntityRepository;
-import pl.coderslab.charity.security.CustomUser;
+import pl.coderslab.charity.security.CharityAppUser;
 
 @Service
 @AllArgsConstructor
-public class CustomUserService implements UserDetailsService {
+public class CharityAppUserService implements UserDetailsService {
 
     private final UserEntityRepository userEntityRepository;
     private final RoleRepository roleRepository;
@@ -31,7 +31,7 @@ public class CustomUserService implements UserDetailsService {
         if (userEntity == null) {
             throw new UsernameNotFoundException(email + " not found in DB");
         } else {
-            return new CustomUser(userEntity);
+            return new CharityAppUser(userEntity);
         }
     }
 }

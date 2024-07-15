@@ -7,15 +7,18 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import pl.coderslab.charity.dto.LoggedUserInformation;
+import pl.coderslab.charity.entity.Role;
 import pl.coderslab.charity.entity.UserEntity;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
 @AllArgsConstructor
-public class CustomUser implements UserDetails {
+public class CharityAppUser implements UserDetails {
 
     private UserEntity userEntity;
 
@@ -42,7 +45,14 @@ public class CustomUser implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
-        return Collections.singleton(new SimpleGrantedAuthority("USER"));
+        Set<GrantedAuthority> authorities = new HashSet<>();
+
+        for (Role role : userEntity.getRoles()) {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
+
+//        return Collections.singleton(new SimpleGrantedAuthority("USER"));
+        return authorities;
     }
 
     @Override

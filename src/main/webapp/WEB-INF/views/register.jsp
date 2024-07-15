@@ -8,20 +8,20 @@
     <%--@elvariable id="user" type="pl.coderslab.charity.entity.UserEntity"--%>
     <form:form action="/register" method="post" modelAttribute="user">
         <div class="form-group">
-            <form:input type="email" name="email" placeholder="Email" path="email" />
+            <form:input type="email" name="email" placeholder="Email" path="email"/>
         </div>
         <div class="form-group">
-            <form:input type="text" name="first_name" placeholder="Imię" path="firstName" />
+            <form:input type="text" name="first_name" placeholder="Imię" path="firstName"/>
         </div>
         <div class="form-group">
-            <form:input type="text" name="last_name" placeholder="Nazwisko" path="lastName" />
+            <form:input type="text" name="last_name" placeholder="Nazwisko" path="lastName"/>
         </div>
         <div class="form-group">
-            <form:input type="password" name="password" placeholder="Hasło" path="password" />
+            <form:input type="password" name="password" placeholder="Hasło" path="password"/>
         </div>
-<%--        TODO - verify password --%>
+        <%--        TODO - verify password --%>
         <div class="form-group">
-            <input type="password" name="password2" placeholder="Powtórz hasło" />
+            <input type="password" name="password2" placeholder="Powtórz hasło"/>
         </div>
 
         <div class="form-group form-group--buttons">

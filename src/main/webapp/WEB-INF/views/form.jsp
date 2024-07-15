@@ -2,32 +2,32 @@
 
 <%@include file="header.jsp" %>
 
-    <div class="slogan container container--90">
-        <div class="slogan--item">
-            <h1>
-                Oddaj rzeczy, których już nie chcesz<br />
-                <span class="uppercase">potrzebującym</span>
-            </h1>
+<div class="slogan container container--90">
+    <div class="slogan--item">
+        <h1>
+            Oddaj rzeczy, których już nie chcesz<br/>
+            <span class="uppercase">potrzebującym</span>
+        </h1>
 
-            <div class="slogan--steps">
-                <div class="slogan--steps-title">Wystarczą 4 proste kroki:</div>
-                <ul class="slogan--steps-boxes">
-                    <li>
-                        <div><em>1</em><span>Wybierz rzeczy</span></div>
-                    </li>
-                    <li>
-                        <div><em>2</em><span>Spakuj je w worki</span></div>
-                    </li>
-                    <li>
-                        <div><em>3</em><span>Wybierz fundację</span></div>
-                    </li>
-                    <li>
-                        <div><em>4</em><span>Zamów kuriera</span></div>
-                    </li>
-                </ul>
-            </div>
+        <div class="slogan--steps">
+            <div class="slogan--steps-title">Wystarczą 4 proste kroki:</div>
+            <ul class="slogan--steps-boxes">
+                <li>
+                    <div><em>1</em><span>Wybierz rzeczy</span></div>
+                </li>
+                <li>
+                    <div><em>2</em><span>Spakuj je w worki</span></div>
+                </li>
+                <li>
+                    <div><em>3</em><span>Wybierz fundację</span></div>
+                </li>
+                <li>
+                    <div><em>4</em><span>Zamów kuriera</span></div>
+                </li>
+            </ul>
         </div>
     </div>
+</div>
 </header>
 
 <section class="form--steps">
@@ -141,11 +141,11 @@
                                 Kod pocztowy <form:input path="zipCode" id="form-zip"/> </label>
                         </div>
 
-<%--                        <div class="form-group form-group--inline">--%>
-<%--                            <label>--%>
-<%--                                Numer telefonu <input type="phone" name="phone"/>--%>
-<%--                            </label>--%>
-<%--                        </div>--%>
+                            <%--                        <div class="form-group form-group--inline">--%>
+                            <%--                            <label>--%>
+                            <%--                                Numer telefonu <input type="phone" name="phone"/>--%>
+                            <%--                            </label>--%>
+                            <%--                        </div>--%>
                     </div>
 
                     <div class="form-section--column">
@@ -159,7 +159,8 @@
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Uwagi dla kuriera <form:textarea path="pickUpComment" rows="5" id="form-comment"/> </label>
+                            <label> Uwagi dla kuriera <form:textarea path="pickUpComment" rows="5"
+                                                                     id="form-comment"/> </label>
                         </div>
                     </div>
                 </div>
@@ -197,7 +198,7 @@
                                 <li id="summary-street"></li>
                                 <li id="summary-city"></li>
                                 <li id="summary-zip"></li>
-<%--                                <li>telefon</li>--%>
+                                    <%--                                <li>telefon</li>--%>
                             </ul>
                         </div>
 

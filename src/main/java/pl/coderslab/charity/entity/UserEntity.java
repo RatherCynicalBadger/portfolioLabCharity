@@ -20,7 +20,7 @@ public class UserEntity {
     private String lastName;
     private String email;
     private String password;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role")
     @JsonIgnore
     private Set<Role> roles = new HashSet<>();

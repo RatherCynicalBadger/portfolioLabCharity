@@ -1,18 +1,19 @@
 package pl.coderslab.charity.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.entity.UserEntity;
-import pl.coderslab.charity.security.CustomUser;
-import pl.coderslab.charity.service.CustomUserService;
+import pl.coderslab.charity.security.CharityAppUser;
+import pl.coderslab.charity.service.CharityAppUserService;
 
 @Controller
 @AllArgsConstructor
 public class UserController {
-    private final CustomUserService customUserService;
+    private final CharityAppUserService charityAppUserService;
 
     @GetMapping("/register")
     public String registerPage(Model model) {
@@ -23,7 +24,7 @@ public class UserController {
     @PostMapping("/register")
     public String registerNewUser(@ModelAttribute UserEntity user) {
 
-        user = customUserService.save(user);
+        user = charityAppUserService.save(user);
 
         return "redirect:/login";
     }
@@ -39,9 +40,14 @@ public class UserController {
         return "LOGIN FAILURE";
     }
 
-    @GetMapping("/user_details")
-    public String userDetailsPage(Model model, @AuthenticationPrincipal CustomUser customUser) {
-        model.addAttribute("currentUser", customUser.generateBasicInfo());
+    @RequestMapping("/user_details")
+    public String userDetailsPage(Model model, @AuthenticationPrincipal CharityAppUser charityAppUser) {
+        model.addAttribute("currentUser", charityAppUser.generateBasicInfo());
         return "user-details";
+    }
+
+    @GetMapping("/admin_panel")
+    public String adminPanel() {
+        return "admin-panel";
     }
 }
