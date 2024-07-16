@@ -19,7 +19,7 @@ public class CharityAppLoginHandler implements AuthenticationSuccessHandler {
 
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
         if (roles.contains("ROLE_ADMIN")) {
-            response.sendRedirect("/admin_panel");
+            response.sendRedirect("/admin/panel");
         } else {
             response.sendRedirect("/user_details");
         }

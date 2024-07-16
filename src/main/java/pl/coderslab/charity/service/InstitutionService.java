@@ -15,4 +15,16 @@ public class InstitutionService {
     public List<Institution> findAll() {
         return institutionRepo.findAll();
     }
+
+    public Institution findById(Integer id) {
+        return institutionRepo.findById(id).orElseThrow();
+    }
+
+    public Institution save(Institution institution) {
+        return institutionRepo.save(institution);
+    }
+
+    public void deleteById(Integer id) {
+        institutionRepo.deleteById(id);
+    }
 }

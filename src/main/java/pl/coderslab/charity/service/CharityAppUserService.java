@@ -6,10 +6,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.coderslab.charity.entity.Role;
 import pl.coderslab.charity.entity.UserEntity;
 import pl.coderslab.charity.repository.RoleRepository;
 import pl.coderslab.charity.repository.UserEntityRepository;
 import pl.coderslab.charity.security.CharityAppUser;
+
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -23,6 +26,31 @@ public class CharityAppUserService implements UserDetailsService {
         userEntity.setPassword(encoder.encode(userEntity.getPassword()));
         userEntity.getRoles().add(roleRepository.getRoleByName("ROLE_USER"));
         return userEntityRepository.save(userEntity);
+    }
+
+    public UserEntity saveAdmin(UserEntity userEntity) {
+        userEntity.setPassword(encoder.encode(userEntity.getPassword()));
+        userEntity.getRoles().add(roleRepository.getRoleByName("ROLE_USER"));
+        userEntity.getRoles().add(roleRepository.getRoleByName("ROLE_ADMIN"));
+        return userEntityRepository.save(userEntity);
+    }
+
+    public void deleteById(Integer id) {
+        userEntityRepository.deleteById(id);
+    }
+
+    public UserEntity findById(Integer id) {
+        return userEntityRepository.findById(id).orElseThrow();
+    }
+
+    public List<UserEntity> findAllUsers() {
+        Role adminRole = roleRepository.getRoleByName("ROLE_ADMIN");
+        return userEntityRepository.findAllByRolesNotContaining(adminRole);
+    }
+
+    public List<UserEntity> findAllAdmins() {
+        Role adminRole = roleRepository.getRoleByName("ROLE_ADMIN");
+        return userEntityRepository.findAllByRolesContaining(adminRole);
     }
 
     @Override
